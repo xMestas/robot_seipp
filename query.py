@@ -15,7 +15,12 @@ def check_response(response):
 		print(response.text)
 		return {}
 
-def query_summoners_byname(name):
+def query_summoners_by_name(name):
 	header = {"X-Riot-Token" : read_key()}
 	response = requests.get("https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + name, headers = header)
+	return check_response(response)
+
+def query_league_by_encrypted_summoner_id(id):
+	header = {"X-Riot-Token" : read_key()}
+	response = requests.get("https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/" + id, headers = header)
 	return check_response(response)
