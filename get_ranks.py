@@ -9,25 +9,29 @@ def get_soloqueue(leagues_info):
 
 def main():
 	output_dict = {}
+	example_input = ["boringness", "seippy", "fuckthatguydoublelift", "best ieona na"]
 
-	response = query.query_summoners_by_name("boringness")
+	for i in example_input:
 
-	if not response:
-		print("Recieved an error")
-		exit(1)
+		response = query.query_summoners_by_name(i)
 
-	response = query.query_league_by_encrypted_summoner_id(response["id"])
+		if not response:
+			print("Summoner does not exist")
+			continue
+
+		response = query.query_league_by_encrypted_summoner_id(response["id"])
 	
-	if not response:
-		print("Recieved an error")
-		exit(1)
+		if not response:
+			print("Summoner does not play ranked")
+			continue
 
-	solo_queue_info = get_soloqueue(response)
-	if not solo_queue_info:
-		print("Summoner does not play solo queue")
-		exit(1)
+		solo_queue_info = get_soloqueue(response)
+		if not solo_queue_info:
+			print("Summoner does not play solo queue")
+			continue
 	
-	output_dict[solo_queue_info["summonerName"]] = solo_queue_info
+		output_dict[solo_queue_info["summonerName"]] = solo_queue_info
+	
 	with open("summoner_ranks.json", "w") as outfile:
 		json.dump(output_dict, outfile)
 
