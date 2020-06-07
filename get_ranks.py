@@ -28,7 +28,8 @@ def main():
 		exit(1)
 	
 	output_dict[solo_queue_info["summonerName"]] = solo_queue_info
-	print(output_dict)
+	with open("summoner_ranks.json", "w") as outfile:
+		json.dump(output_dict, outfile)
 
 if __name__ == "__main__":
 	main()
