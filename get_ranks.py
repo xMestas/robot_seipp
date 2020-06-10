@@ -7,11 +7,24 @@ def get_soloqueue(leagues_info):
 			return i
 	return {}
 
+def read_summoner_names():
+	summoner_names = []
+
+	try:	
+		infile = open("summoner_names.txt", "r")
+		summoner_names = infile.readlines()
+		infile.close()
+	except IOError:
+		print("summoner_names file does not exist")
+
+	summoner_names = [x.strip() for x in summoner_names]
+	return summoner_names
+
 def main():
 	output_dict = {}
-	example_input = ["boringness", "seippy", "fuckthatguydoublelift", "best ieona na"]
+	summoner_names = read_summoner_names()
 
-	for i in example_input:
+	for i in summoner_names:
 
 		response = query.query_summoners_by_name(i)
 
