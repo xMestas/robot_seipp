@@ -27,13 +27,11 @@ def main():
 	for i in summoner_names:
 
 		response = query.query_summoners_by_name(i)
-
 		if not response:
 			print("Summoner does not exist")
 			continue
 
 		response = query.query_league_by_encrypted_summoner_id(response["id"])
-	
 		if not response:
 			print("Summoner does not play ranked")
 			continue
