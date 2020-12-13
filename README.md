@@ -12,9 +12,11 @@ Before running Robot Seipp, you must install discord.py, a python library that s
 	pip3 install discord.py
 
 Before running the scripts to deploy and teardown the bot, make sure you have the proper permissions set up for them.
+	
 	chmod 700 ./deploy
 	chmod 700 ./teardown	
 
 You can run the bot by running the deploy script, and kill it with the teardown script
+
 	./deploy
 	./teardown
