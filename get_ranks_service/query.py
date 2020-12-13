@@ -1,8 +1,13 @@
+import sys
+sys.path.append("..")
+
 import requests
+import util
 
 def read_key():
-	key_file = open("../keys/riot_api.key", "r")
-	return key_file.readline().rstrip()
+	return util.read_key("../keys/riot_api.key")	
+	#key_file = open("../keys/riot_api.key", "r")
+	#return key_file.readline().rstrip()
 
 def check_response(response):
 	if response.ok:
