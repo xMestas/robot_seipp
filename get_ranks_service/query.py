@@ -1,7 +1,7 @@
 import requests
 
 def read_key():
-	key_file = open("keys/riot_api.key", "r")
+	key_file = open("../keys/riot_api.key", "r")
 	return key_file.readline().rstrip()
 
 def check_response(response):
