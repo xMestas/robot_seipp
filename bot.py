@@ -1,3 +1,5 @@
+# The service that runs the discord bot itself.
+
 import util
 import discord
 
